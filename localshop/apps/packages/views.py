@@ -56,6 +56,11 @@ class SimpleIndex(ListView):
         if not user:
             return HttpResponse('Invalid username/password', status=401)
 
+        if not user.has_perms(['packages.add_package',
+            'packages.change_package', 'packages.add_release',
+            'packages.change_release']):
+            return HttpResponse("Permission denied", status=401)
+
         actions = {
             'submit': handle_register_or_upload,
             'file_upload': handle_register_or_upload,
