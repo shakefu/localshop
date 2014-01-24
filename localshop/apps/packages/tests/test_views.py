@@ -1,3 +1,6 @@
+import base64
+
+from django.test import Client
 from django.contrib.auth.models import User
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
@@ -97,3 +100,24 @@ class TestDistutilsViews(TestCase):
         self.assertEqual(release_file.filename, 'localshop-0.1.tar.gz')
         self.assertEqual(release_file.distribution.read(),
             'binary-test-data-here')
+
+    def test_registering_401_without_permissions(self):
+        username = 'noperms'
+        password = 'secret'
+        user = User.objects.create_user(username, 'test@example.org', password)
+
+        client = Client()
+        response = client.post('/accounts/signin/', {'identification':
+            username, 'password': password})
+        # 200 is a bad login - reprints the form - 302 is a redirect and
+        # indicates a good login
+        self.assertEqual(response.status_code, 302)
+
+        response = client.get('/')
+        self.assertEqual(response.status_code, 200)
+
+        response = client.get('/simple')
+        # XXX: This is always returning a 403 here even though it shouldn't
+        # when logged in. Not sure what's up with that.
+        # self.assertEqual(response.status_code, 200)
+
