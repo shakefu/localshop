@@ -215,12 +215,17 @@ def handle_register_or_upload(post_data, files, user):
             return HttpResponseBadRequest(
                 '%s is a pypi package!' % package.name)
 
-        # Ensure that the user is one of the owners
-        if not package.owners.filter(pk=user.pk).exists():
-            if not user.is_superuser:
+        is_owner = package.owners.filter(pk=user.pk).exists())
+        if not is_owner or not user.is_superuser:
+            # Ensure that the user is one of the owners
+            if not user.has_perms(['packages.add_package',
+                'packages.change_package', 'packages.add_release',
+                'packages.change_release', 'packages.delete_package',
+                'packages.delete_release']):
                 return HttpResponseForbidden('No permission for this package')
 
-            # User is a superuser, add him to the owners
+        # If user is not an owner (but has permissions), we
+        if not is_owner:
             package.owners.add(user)
 
         try:
