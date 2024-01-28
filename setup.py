@@ -40,7 +40,7 @@ setup(
         'gunicorn==19.1.1',
         'netaddr==0.7.12',
         'requests==2.18.4',
-        'sqlparse==0.1.15',
+        'sqlparse==0.4.4',
         'whitenoise==3.3.1',
         'Versio==0.3.0',
     ],
