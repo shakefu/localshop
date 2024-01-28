@@ -26,7 +26,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'Django==1.11.7',
-        'Pillow==3.4.2',
+        'Pillow==10.2.0',
         'celery==4.1.0',
         'django-braces==1.11.0',
         'django-celery-beat==1.1.0',
