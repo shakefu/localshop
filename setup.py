@@ -37,7 +37,7 @@ setup(
         'django-storages==1.6.5',
         'django-widget-tweaks==1.4.1',
         'docutils==0.12',
-        'gunicorn==19.1.1',
+        'gunicorn==22.0.0',
         'netaddr==0.7.12',
         'requests==2.18.4',
         'sqlparse==0.1.15',
