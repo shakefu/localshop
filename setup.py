@@ -30,7 +30,7 @@ setup(
         'celery==5.2.2',
         'django-braces==1.11.0',
         'django-celery-beat==1.1.0',
-        'django-celery-results==1.0.1',
+        'django-celery-results==2.4.0',
         'django-configurations==2.0',
         'django-environ==0.4.4',
         'django-model-utils==3.0.0',
