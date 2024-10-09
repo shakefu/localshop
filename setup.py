@@ -39,7 +39,7 @@ setup(
         'docutils==0.12',
         'gunicorn==19.1.1',
         'netaddr==0.7.12',
-        'requests==2.18.4',
+        'requests==2.32.2',
         'sqlparse==0.1.15',
         'whitenoise==3.3.1',
         'Versio==0.3.0',
