@@ -25,7 +25,7 @@ setup(
     long_description='\n'.join(readme),
     zip_safe=False,
     install_requires=[
-        'Django==4.2.16',
+        'Django==4.2.17',
         'Pillow==10.3.0',
         'celery==5.2.2',
         'django-braces==1.11.0',
